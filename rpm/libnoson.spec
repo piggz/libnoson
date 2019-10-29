@@ -17,14 +17,14 @@
 #
 
 
-Name:           noson
+Name:           libnoson
 Version:        1.16.2
 Release:        0
 Summary:        C++ library for accessing sonos devices
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/janbar/noson/
-Source0:        https://github.com/janbar/noson/archive/%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  flac-devel
@@ -57,12 +57,12 @@ Development files for noson library. The noson library supports basic features
 to browse music index and control playback in any zones.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}/noson
 
 %build
   %cmake \
     -DCMAKE_INSTALL_FULL_LIBDIR=%{_libdir}
-  %make_jobs
+  make
 
 %install
   %make_install -C build
@@ -71,8 +71,7 @@ to browse music index and control playback in any zones.
 %postun -n libnoson1 -p /sbin/ldconfig
 
 %files -n libnoson1
-%{_libdir}/libnoson.so.%{version}
-%{_libdir}/libnoson.so.1
+%{_libdir}/libnoson.so.*
 
 %files devel
 %{_includedir}/noson
