@@ -29,8 +29,8 @@ BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  flac-devel
 BuildRequires:  gcc-c++
-BuildRequires:  libopenssl-devel
-BuildRequires:  libpulse-devel
+BuildRequires:  openssl-devel
+BuildRequires:  pulseaudio-devel
 BuildRequires:  zlib-devel
 
 %description
